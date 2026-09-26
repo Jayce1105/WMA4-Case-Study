@@ -1,19 +1,4 @@
 <?php
-
-/**
- * PDO singleton connection.
- *
- * LOCAL (Laragon):  host 127.0.0.1, user root, empty password — the defaults below.
- *
- * INFINITYFREE: replace the four values below with the ones shown in your
- * InfinityFree control panel under "MySQL Databases":
- *   - $host      looks like sql123.epizy.com  (NEVER "localhost" or "127.0.0.1" — that
- *                 causes a "No such file or directory" error on InfinityFree)
- *   - $dbName    looks like epiz_12345678_online_ordering  (auto-prefixed with your
- *                 account username)
- *   - $username  looks like epiz_12345678  (your InfinityFree account username)
- *   - $password  the password you set for that database / your hosting account password
- */
 class Database
 {
     private static ?PDO $instance = null;
