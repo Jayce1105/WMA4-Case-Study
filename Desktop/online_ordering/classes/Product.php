@@ -108,9 +108,6 @@ class Product extends Model implements CRUDInterface
 
     public function reduceStock(int $qty): void
     {
-        // Re-read the stock with a row lock (must run inside an active transaction —
-        // see Order::placeOrder()) so two orders placed at the same moment can't both
-        // pass the check against the same stale stock figure.
         $lockStmt = $this->db->prepare('SELECT stock_quantity FROM products WHERE product_id = :id FOR UPDATE');
         $lockStmt->execute(['id' => $this->productId]);
         $row = $lockStmt->fetch();
@@ -188,11 +185,6 @@ class Product extends Model implements CRUDInterface
 
         return $stmt->execute(['id' => $id]);
     }
-
-    /**
-     * Searchable / filterable / sortable listing for the catalog and admin pages.
-     * Demonstrates WHERE, ORDER BY, and LIMIT as required.
-     */
     public static function findAvailable(
         PDO $db,
         string $search = '',
