@@ -1,10 +1,4 @@
 <?php
-/**
- * Shared page header. Including pages should set, before requiring this file:
- *   $pageTitle  - string shown in the browser tab
- *   $activeNav  - one of 'menu' | 'order' | 'track' | 'admin' (for the active nav underline)
- *   $rootPath   - '' for pages at the project root, '../' for pages inside admin/
- */
 require_once __DIR__ . '/../config/app.php';
 
 $pageTitle = $pageTitle ?? SITE_NAME;
